@@ -13,8 +13,9 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
 	~~~
 
 3. Run the font path fix.
+	* Run `node font-fix.js` from the command line
 	* There is an incorrect transformation that occurs whith the relative paths when using webpack, we need to run this any time we update/install semantic-ui
-	If you don't care about semantic-ui bundled fonts, then you can amend your webpack config as follows:
+	If you don't care about semantic-ui bundled fonts, then **do not** run this font fix command; amend your webpack config as follows:
 
 		<a name="idcurls"></a>
 
@@ -34,6 +35,8 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
 
 4. Start the webpack dev server
 
+
+##### CLI Junkie?
 ~~~bash
 git clone https://github.com/atomicpages/semantic-ui-webpack2-boilerplate.git
 npm i

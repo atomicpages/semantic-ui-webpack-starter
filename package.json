@@ -1,6 +1,6 @@
 {
     "name": "semantic-ui-webpack2-boilerplate",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "A boilerplate for semantic-ui and webpack2",
     "main": "index.js",
     "repository": "https://github.com/atomicpages/semantic-ui-webpack2-boilerplate.git",
