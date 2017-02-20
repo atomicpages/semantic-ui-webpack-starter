@@ -8,7 +8,9 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
 2. Install dependencies via `npm`
 	* **Note:** `yarn` users will encounter issues installing `semantic-ui` source, if this occurs kill the process and run:
 
-		npm i semantic-ui
+	~~~bash
+	npm i semantic-ui
+	~~~
 
 3. Run the font path fix.
 	* There is an incorrect transformation that occurs whith the relative paths when using webpack, we need to run this any time we update/install semantic-ui
