@@ -6,7 +6,7 @@ module.exports = {
     entry: './app/index.js', // where the bundler starts the bundling process
     output: { // where the bundled code is saved
         path: path.resolve('dist'),
-        filename: 'index_bundle.js'
+        filename: 'bundle.js'
     },
     resolve: {
         alias: {
@@ -35,6 +35,11 @@ module.exports = {
             {
                 test: /\.(ttf|eot|svg|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader'
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: [ 'babel-loader' ]
             }
         ]
     },
