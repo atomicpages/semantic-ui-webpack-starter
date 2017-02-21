@@ -1,19 +1,23 @@
 const fs = require('fs');
 
 function fixFontPath(filename) {
-    let content = fs.readFileSync(filename, 'utf8');
-    let quote = '"';
+    if (fs.existsSync(filename)) {
+        let content = fs.readFileSync(filename, 'utf8');
+        let quote = '"';
 
-    if (/@fontPath\s*:\s*'/.test(content)) {
-        quote = "'";
+        if (/@fontPath\s*:\s*'/.test(content)) {
+            quote = "'";
+        }
+
+        let newContent = content.replace(
+            /@fontPath\s*:\s*("|')\.{2}\/\.{2}\/themes\//g,
+            `@fontPath  : ${quote}../../`
+        );
+
+        fs.writeFileSync(filename, newContent, 'utf8');
+    } else {
+        console.warn(`${filename} does not exist`);
     }
-
-    let newContent = content.replace(
-        /@fontPath\s*:\s*("|')\.{2}\/\.{2}\/themes\//g,
-        `@fontPath  : ${quote}../../`
-    );
-
-    fs.writeFileSync(filename, newContent, 'utf8');
 }
 
 fixFontPath('semantic/src/themes/basic/elements/icon.variables');

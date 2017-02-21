@@ -8,6 +8,7 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
 2. Install dependencies via `npm`
 	* **Note:** `yarn` users will encounter issues installing `semantic-ui` source, if this occurs kill the process and run:
 
+
 	~~~bash
 	npm i semantic-ui
 	~~~
@@ -75,8 +76,19 @@ Currently, the best way to do this is to develop your theme inside of the `seman
 
 	**Note:** if you've set aliases ensure those are updated for the proper path.
 
-### Running for Production
-In progress...
+### Adding a Custom Theme
+Due to the rigid nature of Webpack _and_ Semantic UI, they don't mingle very well. To by pass this, we can develop our theme inside of the `semantic` source folder directly and use gulp tasks to copy it to our project root.
+
+~~~bash
+gulp copy-to # copies to semantic folder
+gulp copy-from # copies from the semantic folder
+gulp copy-theme-config # copies theme.config to project root; run with copy-from by default
+~~~
+
+In order to get webpack to deploy the new changes, all modifications to theme files must be done inside the `semantic-ui` folder.
+
+### Build for Production
+// TODO
 
 ### Common issues
 1. URL issues with some assets not able to be found
