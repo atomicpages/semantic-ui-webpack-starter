@@ -1,12 +1,17 @@
 {
-    "plugins": [ "transform-class-properties" ],
+    "plugins": [
+        "transform-class-properties",
+        "react-hot-loader/babel"
+    ],
     "presets": [
-        [ "es2015", { "modules": false } ],
+        ["es2015", {
+            "modules": false
+        }],
         "react"
     ],
     "env": {
         "development": {
-            "presets": [ "react-hmre" ]
+            "presets": ["react-hmre"]
         }
     }
 }

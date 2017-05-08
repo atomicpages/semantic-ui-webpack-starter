@@ -1,29 +1,29 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
-    entry: './app/index.js', // where the bundler starts the bundling process
+    entry: [
+        './app/index.js',
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+    ], // where the bundler starts the bundling process
     output: { // where the bundled code is saved
         path: path.resolve('dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve: {
         alias: {
-            semantic: path.resolve(__dirname, 'semantic/src/'),
+            semantic: path.resolve(__dirname, 'semantic/dist/'),
+            semantic_source: path.resolve(__dirname, 'semantic/src/'),
             jquery: path.resolve(__dirname, 'node_modules/jquery/src/jquery')
         }
     },
     module: {
         loaders: [
-            {
-                test: /\.(png|gif)$/,
-                loader: 'url-loader?limit=1024&name=[name]-[hash:8].[ext]!image-webpack-loader'
-            },
-            {
-                test: /\.jpg$/,
-                loader: 'file-loader'
-            },
             {
                 test: /\.less$/, // import css from 'foo.less';
                 use: [
@@ -33,7 +33,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eot|svg|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|woff2?|png|gif|jpe?g|tiff?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader'
             },
             {
@@ -44,8 +44,16 @@ module.exports = {
         ]
     },
     devtool: 'eval-source-map',
-    devServer: { compress: true },
+    devServer: {
+        compress: true,
+        hot: true,
+        contentBase: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new DashboardPlugin(),
         new HtmlWebpackPlugin({
             template: './app/index.html',
             filename: 'index.html',

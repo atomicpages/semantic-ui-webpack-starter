@@ -5,6 +5,8 @@ function fixFontPath(filename) {
         let content = fs.readFileSync(filename, 'utf8');
         let quote = '"';
 
+        console.log(`Applying fix in file: ${filename}`);
+
         if (/@fontPath\s*:\s*'/.test(content)) {
             quote = "'";
         }
