@@ -1,4 +1,7 @@
+import $ from 'jquery';
+
 import css from 'semantic/semantic.less';
+
 import 'semantic/definitions/modules/transition';
 import 'semantic/definitions/modules/accordion';
 
