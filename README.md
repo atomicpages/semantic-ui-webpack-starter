@@ -19,9 +19,9 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
     -   There is an incorrect transformation that occurs with the relative paths when using webpack, we need to run this any time we update/install semantic-ui
         If you don't care about semantic-ui bundled fonts, then **do not** run this font fix command; amend your webpack config as follows:
 
-            <a name="idcurls"></a>
+        <a name="idcurls"></a>
 
-            ```js
+        ```js
             {
             	test: /\.less$/, // import css from 'foo.less';
             	use: [
@@ -33,7 +33,7 @@ After spending a few days on this issue, I decided to create a boilerplate so ot
             		'less-loader'
             	]
             }
-            ```
+        ```
 
 4.  Start the webpack dev server
 
