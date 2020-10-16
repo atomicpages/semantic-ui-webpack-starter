@@ -3,5 +3,6 @@
         "graceful-fs": {
             "version": "4.2.4"
         }
-    }
+    },
+    "version": "2.0.0"
 }
